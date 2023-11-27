@@ -9,6 +9,8 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -62,6 +64,12 @@ public class ForestFireGUI extends Application {
         stage.setTitle("Forest Fire Simulation");
         stage.show();
         startSimulationLoop(gridPane);
+        KeyCombination keyCombination = new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN);
+        scene.setOnKeyPressed(event -> {
+            if (keyCombination.match(event)) {
+                stage.close();
+            }
+        });
     }
     private void updateGUI() {
         for (int i = 0; i < forest.getHeight(); i++) {
@@ -95,7 +103,6 @@ public class ForestFireGUI extends Application {
                 timer.start();
             }
         };
-
         Scene scene = gridPane.getScene();
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEventHandler);
     }
