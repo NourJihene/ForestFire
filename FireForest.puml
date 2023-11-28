@@ -48,7 +48,7 @@ class Position <<Model>>{
 + toString(): String
     }
 
-class CellShape{
+class CellShape <<UI>>{
  - cell: Cell
 
  + CellShape(width: double, borderColor: Color, borderWidth: double, cell: Cell)
@@ -57,13 +57,13 @@ class CellShape{
  + updateColor(): void
  }
 
-class PositionParser{
+class PositionParser <<Util>>{
 + {static} parse(positionsString: String): Position[]
 }
-class PropertiesReader{
+class PropertiesReader <<Util>>{
 +{static} loadFile(fileDirectory: String): InputStream
 }
- class ForestGUI{
+ class ForestFireGUI <<UI>>{
 - CELL_SIZE: int
 - CELL_BORDER_WIDTH: double
 - fileDirectory: String
@@ -81,6 +81,9 @@ class PropertiesReader{
 - startSimulationLoop(gridPane: GridPane): void
 - createGridPane(): GridPane
  }
+class Main{
++{static} main(args: String[])
+}
 
 
 Forest "1" *-- "1..*"   Cell : 2D Array
@@ -89,8 +92,9 @@ Cell "1" *-- "1..1" Position
 Rectangle <|-- CellShape
 CellShape "1"-- "1" Color
 CellShape "1" o-- "1..1" Cell
-Application <|-- ForestGUI
-ForestGUI -- PositionParser : <<use>>
-ForestGUI -- PropertiesReader : <<use>>
-ForestGUI  *--  Forest
+Application <|-- ForestFireGUI
+ForestFireGUI -- PositionParser : <<use>>
+ForestFireGUI -- PropertiesReader : <<use>>
+ForestFireGUI  *--  Forest
+Main --> ForestFireGUI : <<calls>>
 @enduml
