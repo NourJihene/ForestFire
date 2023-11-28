@@ -1,0 +1,96 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Application{}
+class Rectangle{}
+
+class Cell <<Entity>>{
+- state: CellState
+- position: Position
+
++ Cell(position: Position)
++ toString(): String
++ getState(): CellState
++ setState(state: CellState): void
++ getPosition(): Position
+    }
+
+class Forest <<Entity>>{
+- height: int
+- width: int
+- cells: Cell[][]
+
++ Forest(height: int, width: int, positions: Position[])
++ toString(): String
++ getHeight(): int
++ getWidth(): int
++ getCells(): Cell[][]
+- initializeCells(): Cell[][]
+- isValidPosition(row: int, column: int): boolean
++ setFireOn(positions: Position[]): void
++ findCellsOnFire(): List<Cell>
++ nextStep(probability: double): void
+- propagateFire(position: Position, probability: double): void
+}
+
+enum CellState <<Enum>>{
+        NOT_AFFECTED
+        ON_FIRE
+        ASH
+    }
+class Position <<Model>>{
+- row: int
+- column: int
+
++ Position(row: int, column: int)
++ getColumn(): int
++ getRow(): int
++ toString(): String
+    }
+
+class CellShape{
+ - cell: Cell
+
+ + CellShape(width: double, borderColor: Color, borderWidth: double, cell: Cell)
+ + setCell(cell: Cell): void
+ - getColorForCellState(state: CellState): Color
+ + updateColor(): void
+ }
+
+class PositionParser{
++ {static} parse(positionsString: String): Position[]
+}
+class PropertiesReader{
++{static} loadFile(fileDirectory: String): InputStream
+}
+ class ForestGUI{
+- CELL_SIZE: int
+- CELL_BORDER_WIDTH: double
+- fileDirectory: String
+- propagationProbability: double
+- forest: Forest
+- gridPane: GridPane
+- isSimulationRunning: boolean
+- positions: Position[]
+
++ main(String[] args): void
++ initializeForestProperties(): void
++ start(stage: Stage): void
+- updateGUI():void
+- runSimulation((probability: double): void
+- startSimulationLoop(gridPane: GridPane): void
+- createGridPane(): GridPane
+ }
+
+
+Forest "1" *-- "1..*"   Cell : 2D Array
+Cell "1" o-- "1..1" CellState
+Cell "1" *-- "1..1" Position
+Rectangle <|-- CellShape
+CellShape "1"-- "1" Color
+CellShape "1" o-- "1..1" Cell
+Application <|-- ForestGUI
+ForestGUI -- PositionParser : <<use>>
+ForestGUI -- PropertiesReader : <<use>>
+ForestGUI  *--  Forest
+@enduml

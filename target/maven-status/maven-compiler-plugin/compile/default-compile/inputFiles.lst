@@ -1,6 +1,6 @@
 /Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/UI/ForestFireGUI.java
+/Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/model/enumeration/CellState.java
 /Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/UI/CellShape.java
-/Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/model/CellState.java
 /Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/util/PositionParser.java
 /Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/model/Position.java
 /Users/nour/IdeaProjects/ForestFireEnh/src/main/java/com/example/foret_kata/entities/Cell.java

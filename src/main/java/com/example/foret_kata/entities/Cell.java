@@ -1,7 +1,7 @@
 package com.example.foret_kata.entities;
 
 import com.example.foret_kata.model.Position;
-import com.example.foret_kata.model.CellState;
+import com.example.foret_kata.model.enumeration.CellState;
 
 public class Cell {
     private CellState state;

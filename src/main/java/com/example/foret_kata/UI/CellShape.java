@@ -1,7 +1,7 @@
 package com.example.foret_kata.UI;
 
 import com.example.foret_kata.entities.Cell;
-import com.example.foret_kata.model.CellState;
+import com.example.foret_kata.model.enumeration.CellState;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

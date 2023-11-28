@@ -1,6 +1,6 @@
 package com.example.foret_kata.entities;
 import com.example.foret_kata.model.Position;
-import com.example.foret_kata.model.CellState;
+import com.example.foret_kata.model.enumeration.CellState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class Forest {
         System.out.println("Initialization done: "+ this.toString());
     }
 
-    public Cell[][] initializeCells(){
+    private Cell[][] initializeCells(){
         Cell[][] newCells = new Cell[height][width];
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){

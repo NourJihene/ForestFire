@@ -25,12 +25,12 @@ public class ForestFireGUI extends Application {
     private final int CELL_SIZE = 30;
     private final double CELL_BORDER_WIDTH = 1.5;
     private String fileDirectory;
-    private double propagation_probability;
+    private double propagationProbability;
 
     private Forest forest;
     private GridPane gridPane;
     private boolean isSimulationRunning = true;
-    private static Position[] positions;
+    private Position[] positions;
 
     public static void main(String[] args) {
         launch(args);
@@ -50,7 +50,7 @@ public class ForestFireGUI extends Application {
         String positionsString = properties.getProperty("positions");
         positionsString = positionsString.replaceAll("[{}]", "");
         positions = PositionParser.parse(positionsString);
-        propagation_probability = Double.parseDouble(properties.getProperty("propagation_probability"));
+        propagationProbability = Double.parseDouble(properties.getProperty("propagationProbability"));
         forest = new Forest(height, width, positions);
     }
     @Override
@@ -92,7 +92,7 @@ public class ForestFireGUI extends Application {
             @Override
             public void handle(long now) {
                 if (isSimulationRunning) {
-                    runSimulation(propagation_probability);
+                    runSimulation(propagationProbability);
                 }
                 stop();
             }
